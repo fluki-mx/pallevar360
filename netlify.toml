@@ -6,25 +6,25 @@
 [build]
   base    = ""
   publish = "build"
-  command = "yarn bundle --assets "./static_assets""
+  command = "yarn bundle --assets './static_assets'"
 
 # Production context: All deploys to the main
 # repository branch will inherit these settings.
 
 [context.production]
-  command = "yarn bundle --assets "./static_assets""
+  command = "yarn bundle --assets './static_assets'"
 
 # Deploy Preview context: All Deploy Previews
 # will inherit these settings.
 
 [context.deploy-preview]
-  command = "yarn bundle --assets "./static_assets""
+  command = "yarn bundle --assets './static_assets'"
 
 # Branch Deploy context: All deploys that are not in
 # an active Deploy Preview will inherit these settings.
 
 [context.branch-deploy]
-  command = "yarn bundle --assets "./static_assets""
+  command = "yarn bundle --assets './static_assets'"
 
 [[redirects]]
   from   = "/*"
