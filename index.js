@@ -10,16 +10,25 @@ export default class platform360 extends React.Component {
 
   render() {
     return (
-      <View style={styles.greetingBox}>
-        <Text style={styles.greeting}>
-          Welcome to React 360
-        </Text>
+      <View style={styles.wrapper}>
+        <View style={styles.greetingBox}>
+          <Text style={styles.greeting}>
+            Seguimos trabajando en nuestra plataforma
+          </Text>
+        </View>
       </View>
     );
   }
 };
 
 const styles = StyleSheet.create({
+  wrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 600,
+    width: 1000,
+  },
   panel: {
     // Fill the entire surface
     width: 1000,
@@ -31,7 +40,7 @@ const styles = StyleSheet.create({
   greetingBox: {
     padding: 20,
     backgroundColor: '#000000',
-    borderColor: '#639dda',
+    borderColor: '#EDFF00',
     borderWidth: 2,
   },
   greeting: {
