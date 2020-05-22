@@ -6,25 +6,25 @@
 [build]
   base    = ""
   publish = "build"
-  command = "yarn bundle"
+  command = "yarn bundle --assets 'https://vrparallevar-assets.s3.amazonaws.com/'"
 
 # Production context: All deploys to the main
 # repository branch will inherit these settings.
 
 [context.production]
-  command = "yarn bundle"
+  command = "yarn bundle --assets 'https://vrparallevar-assets.s3.amazonaws.com/'"
 
 # Deploy Preview context: All Deploy Previews
 # will inherit these settings.
 
 [context.deploy-preview]
-  command = "yarn bundle"
+  command = "yarn bundle --assets 'https://vrparallevar-assets.s3.amazonaws.com/'"
 
 # Branch Deploy context: All deploys that are not in
 # an active Deploy Preview will inherit these settings.
 
 [context.branch-deploy]
-  command = "yarn bundle"
+  command = "yarn bundle --assets 'https://vrparallevar-assets.s3.amazonaws.com/'"
 
 [[redirects]]
   from   = "/*"
