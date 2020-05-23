@@ -117,7 +117,6 @@ const styles = StyleSheet.create({
     leftPageButton: {
         height: 30
     },
-
 });
 
 const ConnectedCatalog = connect(Catalog);
