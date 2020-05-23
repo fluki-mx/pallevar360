@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
         height: 500,
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
         borderColor: '#EDFF00',
-        borderWidth: 2,
+        borderWidth: 6,
         flexDirection: 'column',
         justifyContent: 'flex-start',
         alignItems: 'stretch',
