@@ -56,6 +56,13 @@ const Catalog = props => {
                     />
                 ))
             }
+            <View style={styles.pagesButton}>
+                <VrButton
+                    style={styles.leftPageButton}
+                >
+                    <Text style={{textAlign: 'center'}}> {'<'} </Text>
+                </VrButton>
+            </View>
         </View>
     )
 }
@@ -72,7 +79,7 @@ const styles = StyleSheet.create({
         alignItems: 'stretch',
     },
     movieButton: {
-        height: 120,
+        height: 105,
         backgroundColor: '#000000',
         overflow: 'hidden',
     },
@@ -83,7 +90,7 @@ const styles = StyleSheet.create({
     },
     movieButtonPreview: {
         width: '100%',
-        height: 120,
+        height: 105,
     },
     movieButtonInfoHover: {
         backgroundColor: 'rgba(0, 0, 0, 0)',
@@ -99,7 +106,18 @@ const styles = StyleSheet.create({
     },
     movieButtonFilmmaker: {
         fontSize: 16,
-    }
+    },
+    pagesButton: {
+        height: 50,
+        flexDirection: 'row',
+        alignItems: 'center',
+        alignContent: 'center',
+        alignSelf: 'center' 
+    },
+    leftPageButton: {
+        height: 30
+    },
+
 });
 
 const ConnectedCatalog = connect(Catalog);

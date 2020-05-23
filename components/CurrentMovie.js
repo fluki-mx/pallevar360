@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     movieButton: {
-      height: 120,
+      height: 300,
       backgroundColor: '#000000',
       overflow: 'hidden',
     },

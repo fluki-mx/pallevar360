@@ -28,5 +28,26 @@ export default [
         assetVideo: 'future_dreaming_360.mp4',
         preview: 'https://png.pngtree.com/thumb_back/fw800/back_our/20190623/ourmid/pngtree-red-geometric-lines-business-card-background-image_239790.jpg',
         stereo: undefined
-    }
+    },
+    {
+        id: 4,
+        title: 'Future Dreaming',
+        plot: 'Sinópsis ... ',
+        filmmaker: 'Stuart Campbell',
+        country: 'Australia',
+        assetVideo: 'future_dreaming_360.mp4',
+        preview: 'https://png.pngtree.com/thumb_back/fw800/back_our/20190623/ourmid/pngtree-red-geometric-lines-business-card-background-image_239790.jpg',
+        stereo: undefined
+    },
+    {
+        id: 5,
+        title: 'Future Dreaming',
+        plot: 'Sinópsis ... ',
+        filmmaker: 'Stuart Campbell',
+        country: 'Australia',
+        assetVideo: 'future_dreaming_360.mp4',
+        preview: 'https://png.pngtree.com/thumb_back/fw800/back_our/20190623/ourmid/pngtree-red-geometric-lines-business-card-background-image_239790.jpg',
+        stereo: undefined
+    },
+    
 ]
