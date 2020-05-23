@@ -4,8 +4,6 @@
 import { ReactInstance, Surface } from 'react-360-web';
 import SimpleRaycaster from 'simple-raycaster';
 
-var polyfill = new WebVRPolyfill();
-
 function init(bundle, parent, options = {}) {
 
   const r360 = new ReactInstance(bundle, parent, {
