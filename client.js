@@ -12,7 +12,7 @@ function init(bundle, parent, options = {}) {
     ...options,
   });
 
-  const leftPanel = new Surface(300, 600, Surface.SurfaceShape.Flat);
+  const leftPanel = new Surface(400, 500, Surface.SurfaceShape.Flat);
   leftPanel.setAngle(-0.35, 0);
 
   const rightPanel = new Surface(600, 600, Surface.SurfaceShape.Flat );

@@ -60,7 +60,16 @@ const Catalog = props => {
                 <VrButton
                     style={styles.leftPageButton}
                 >
-                    <Text style={{textAlign: 'center'}}> {'<'} </Text>
+                    <Text style={{textAlign: 'center', fontSize: 50}}> 
+                        {'<'} 
+                    </Text>
+                </VrButton>
+                <VrButton
+                    style={styles.leftPageButton}
+                >
+                    <Text style={{textAlign: 'center', fontSize: 50}}> 
+                        {'>'} 
+                    </Text>
                 </VrButton>
             </View>
         </View>
@@ -69,8 +78,8 @@ const Catalog = props => {
 
 const styles = StyleSheet.create({
     wrapper: {
-        width: 300,
-        height: 600,
+        width: 400,
+        height: 500,
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
         borderColor: '#EDFF00',
         borderWidth: 2,
@@ -79,7 +88,7 @@ const styles = StyleSheet.create({
         alignItems: 'stretch',
     },
     movieButton: {
-        height: 105,
+        height: 140,
         backgroundColor: '#000000',
         overflow: 'hidden',
     },
@@ -90,7 +99,7 @@ const styles = StyleSheet.create({
     },
     movieButtonPreview: {
         width: '100%',
-        height: 105,
+        height: 140,
     },
     movieButtonInfoHover: {
         backgroundColor: 'rgba(0, 0, 0, 0)',
@@ -102,10 +111,10 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-start',
     },
     movieButtonTitle: {
-        fontSize: 24,
+        fontSize: 45,
     },
     movieButtonFilmmaker: {
-        fontSize: 16,
+        fontSize: 25,
     },
     pagesButton: {
         height: 50,
@@ -115,7 +124,10 @@ const styles = StyleSheet.create({
         alignSelf: 'center' 
     },
     leftPageButton: {
-        height: 30
+        height: 50
+    },
+    rightPageButton: {
+        height: 50
     },
 });
 

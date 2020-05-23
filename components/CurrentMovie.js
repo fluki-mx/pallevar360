@@ -27,7 +27,7 @@ class CurrentMovie extends React.Component {
       return (
         <View style={styles.wrapper}>
           <View style={{flex: 1, justifyContent: 'center'}}>
-            <Text style={{textAlign: 'center'}}>Selecciona una película</Text>
+            <Text style={{textAlign: 'center', fontSize: 70}}>Selecciona una película</Text>
           </View>
         </View>
       );
