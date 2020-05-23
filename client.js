@@ -2,6 +2,10 @@
 // If you want to modify your application's content, start in "index.js"
 
 import { ReactInstance, Surface } from 'react-360-web';
+import SimpleRaycaster from 'simple-raycaster';
+import WebVRPolyfill from 'webvr-polyfill';
+
+const polyfill = new WebVRPolyfill();
 
 function init(bundle, parent, options = {}) {
 
@@ -15,7 +19,7 @@ function init(bundle, parent, options = {}) {
   leftPanel.setAngle(-0.35, 0);
 
   const rightPanel = new Surface(600, 600, Surface.SurfaceShape.Flat );
-  rightPanel.setAngle(0.25, 0);
+  rightPanel.setAngle(0.35, 0);
 
 
   // Render your app content to the default cylinder surface
@@ -31,6 +35,8 @@ function init(bundle, parent, options = {}) {
 
   // Load the initial environment
   r360.compositor.setBackground(r360.getAssetURL('360_world.jpg'));
+  r360.controls.clearRaycasters()
+  r360.controls.addRaycaster(SimpleRaycaster);
 }
 
 window.React360 = {init};
