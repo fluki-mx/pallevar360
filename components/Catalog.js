@@ -42,10 +42,6 @@ class PageButton extends React.Component {
     state = {
       hover: false,
     };
-
-    // componentDidMount() {
-    //     console.log(this.props)
-    // }
    
     render() {
         return (
@@ -73,16 +69,22 @@ class Pages extends React.Component {
     render() {
         return (
             <View style={styles.pagesWrapper}>
-                <PageButton 
-                    func='prev' 
-                    stylish={{ marginRight: 30 }}
-                    pageNum={this.props.prev}
-                />
-                <PageButton 
-                    func='next' 
-                    stylish={{ marginLeft: 30 }}
-                    pageNum={this.props.next}
-                />
+                {
+                    this.props.prev &&
+                        <PageButton 
+                        func='prev' 
+                        stylish={{ marginRight: 30 }}
+                        pageNum={this.props.prev}
+                        />
+                }
+                {
+                    this.props.next &&
+                        <PageButton 
+                            func='next' 
+                            stylish={{ marginLeft: 30 }}
+                            pageNum={this.props.next}
+                        />
+                }
             </View>
         )
     }

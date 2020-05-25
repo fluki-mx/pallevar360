@@ -38,7 +38,6 @@ export function activeMovie(id) {
 }
 
 export function changePage(num) {
-  console.log('PAGE NUM', num)
   State.activePage = num;
   State.activeMovie = -1;
   const catalog = Paginator(num, 3)
