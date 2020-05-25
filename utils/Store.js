@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Paginator } from './funcs';
 
 /**
  * If you want to share data between multiple root components, you'll need a
@@ -9,8 +10,9 @@ import * as React from 'react';
  * ensure all of our elements are synchronized.
  */
 const State = {
-  movies: undefined,
-  current: -1,
+  catalog: undefined,
+  activePage: 1,
+  activeMovie: -1,
 };
 
 const listeners = new Set();
@@ -21,31 +23,41 @@ function updateComponents() {
   }
 }
 
-export function initialize(seed) {
-  const movies = seed.map(movie => {
-    return movie
-  })
+export function initialize() {
+  const catalog = Paginator(State.activePage, 3)
 
-  State.movies = movies
+  console.log(catalog)
+
+  State.catalog = catalog
   updateComponents( )
 }
 
-export function setCurrent(value) {
-  State.current = value;
+export function activeMovie(id) {
+  State.activeMovie = id;
   updateComponents();
+}
+
+export function changePage(num) {
+  console.log('PAGE NUM', num)
+  State.activePage = num;
+  State.activeMovie = -1;
+  const catalog = Paginator(num, 3)
+
+  State.catalog = catalog
+  updateComponents( )
 }
 
 export function connect(Component) {
   return class Wrapper extends React.Component {
     state = {
-      movies: State.movies,
-      current: State.current,
+      catalog: State.catalog,
+      activeMovie: State.activeMovie,
     };
 
     _listener = () => {
       this.setState({
-        movies: State.movies,
-        current: State.current,
+        catalog: State.catalog,
+        activeMovie: State.activeMovie,
       });
     };
 
@@ -61,8 +73,8 @@ export function connect(Component) {
       return (
         <Component
           {...this.props}
-          movies={this.state.movies}
-          current={this.state.current}
+          catalog={this.state.catalog}
+          activeMovie={this.state.activeMovie}
         />
       );
     }

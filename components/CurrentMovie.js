@@ -19,11 +19,11 @@ class CurrentMovie extends React.Component {
   
   render() {
 
-    if (!this.props.movies) {
+    if (!this.props.catalog) {
       return <View style={styles.wrapper}></View>;
     }
 
-    if (this.props.current < 0) {
+    if (this.props.activeMovie < 0) {
       return (
         <View style={styles.wrapper}>
           <View style={{flex: 1, justifyContent: 'center'}}>
@@ -33,7 +33,7 @@ class CurrentMovie extends React.Component {
       );
     }
 
-    const movie = this.props.movies.find(movie => movie.id === this.props.current);
+    const movie = this.props.catalog.data.find(movie => movie.id === this.props.activeMovie);
     const { gazed } = this.state;
 
     return (
@@ -44,6 +44,7 @@ class CurrentMovie extends React.Component {
         <GazeButton
           duration={3000}
           onClick={this.setGazed}
+          onEnter={() => console.log('ENTER')}
           render={(remainingTime, isGazed) => (
             <View style={styles.greetingBox}>
               <Text style={styles.greeting}>

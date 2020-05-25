@@ -1,6 +1,7 @@
 import * as React from 'react';
-import {Image, StyleSheet, Text, View, VrButton, asset} from 'react-360';
-import {connect, setCurrent} from '../utils/Store';
+import { Image, StyleSheet, Text, View, VrButton, asset} from 'react-360';
+import { connect, activeMovie, changePage } from '../utils/Store';
+import GazeButton from "react-360-gaze-button";
 
 class MovieButton extends React.Component {
     state = {
@@ -13,29 +14,83 @@ class MovieButton extends React.Component {
    
     render() {
         return (
-        <VrButton
-            style={styles.movieButton}
-            onEnter={() => this.setState({hover: true})}
-            onExit={() => this.setState({hover: false})}
-            onClick={() => setCurrent(this.props.id)}
-        >
-            <Image style={styles.movieButtonPreview} source={asset('preview.jpg')} />
-            <View style={[styles.movieButtonInfo, this.state.hover ? styles.movieButtonInfoHover : null]}>
-            <View style={styles.movieButtonLabel}>
-                <Text style={styles.movieButtonTitle}>{this.props.title}</Text>
-            </View>
-            <View style={styles.movieButtonLabel}>
-                <Text style={styles.movieButtonFilmmaker}>{this.props.filmmaker}</Text>
-            </View>
-            </View>
-        </VrButton>
+            <GazeButton
+                style={styles.movieButton}
+                duration={300}
+                onEnter={() => this.setState({hover: true})}
+                onExit={() => this.setState({hover: false})}
+                onClick={() => activeMovie(this.props.id)}
+                render={() => (
+                    <React.Fragment>
+                        <Image style={styles.movieButtonPreview} source={asset('preview.jpg')} />
+                        <View style={[styles.movieButtonInfo, this.state.hover ? styles.movieButtonInfoHover : null]}>
+                        <View style={styles.movieButtonLabel}>
+                            <Text style={styles.movieButtonTitle}>{this.props.title}</Text>
+                        </View>
+                        <View style={styles.movieButtonLabel}>
+                            <Text style={styles.movieButtonFilmmaker}>{this.props.filmmaker}</Text>
+                        </View>
+                        </View>
+                    </React.Fragment>       
+                )}
+            />
         );
     }
 }
 
-const Catalog = props => { 
+class PageButton extends React.Component {
+    state = {
+      hover: false,
+    };
 
-    if (!props.movies) {
+    // componentDidMount() {
+    //     console.log(this.props)
+    // }
+   
+    render() {
+        return (
+            <GazeButton
+                style={[styles.pageButton, this.props.stylish, this.state.hover ? styles.pageButtonHover : null]}
+                duration={400}
+                disabled={this.props.pageNum ? false : true}
+                onEnter={() => this.setState({hover: true})}
+                onExit={() => this.setState({hover: false})}
+                onClick={() => changePage(this.props.pageNum)}
+                render={() => (
+                    <Text style={styles.pageButtonLabel}> 
+                        { this.props.func === 'prev' ? '<' : '>'} 
+                    </Text>      
+                )}
+            />
+        );
+    }
+}
+
+
+
+class Pages extends React.Component {
+
+    render() {
+        return (
+            <View style={styles.pagesWrapper}>
+                <PageButton 
+                    func='prev' 
+                    stylish={{ marginRight: 30 }}
+                    pageNum={this.props.prev}
+                />
+                <PageButton 
+                    func='next' 
+                    stylish={{ marginLeft: 30 }}
+                    pageNum={this.props.next}
+                />
+            </View>
+        )
+    }
+}
+
+const Catalog = props => {
+
+    if (!props.catalog) {
         return (
           <View style={styles.wrapper}>
             <Text>Loading...</Text>
@@ -46,7 +101,7 @@ const Catalog = props => {
     return (
         <View style={styles.wrapper}>
             {
-                props.movies.map((movie, i) => (
+                props.catalog.data.map((movie, i) => (
                     <MovieButton
                         key={i}
                         id={movie.id}
@@ -56,22 +111,12 @@ const Catalog = props => {
                     />
                 ))
             }
-            <View style={styles.pagesButton}>
-                <VrButton
-                    style={styles.leftPageButton}
-                >
-                    <Text style={{textAlign: 'center', fontSize: 50}}> 
-                        {'<'} 
-                    </Text>
-                </VrButton>
-                <VrButton
-                    style={styles.leftPageButton}
-                >
-                    <Text style={{textAlign: 'center', fontSize: 50}}> 
-                        {'>'} 
-                    </Text>
-                </VrButton>
-            </View>
+
+            <Pages 
+                prev={props.catalog.pre_page}
+                next={props.catalog.next_page}
+            />
+            
         </View>
     )
 }
@@ -79,27 +124,27 @@ const Catalog = props => {
 const styles = StyleSheet.create({
     wrapper: {
         width: 400,
-        height: 500,
+        height: 600,
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
         borderColor: '#EDFF00',
-        borderWidth: 6,
+        borderWidth: 10,
         flexDirection: 'column',
         justifyContent: 'flex-start',
         alignItems: 'stretch',
     },
     movieButton: {
-        height: 140,
+        height: 150,
         backgroundColor: '#000000',
         overflow: 'hidden',
     },
     movieButtonInfo: {
         ...StyleSheet.absoluteFillObject,
-        backgroundColor: 'rgba(0, 0, 0, 0.2)',
+        backgroundColor: 'rgba(0, 0, 0, 0.7)',
         flexDirection: 'column',
     },
     movieButtonPreview: {
         width: '100%',
-        height: 140,
+        height: 150,
     },
     movieButtonInfoHover: {
         backgroundColor: 'rgba(0, 0, 0, 0)',
@@ -116,19 +161,27 @@ const styles = StyleSheet.create({
     movieButtonFilmmaker: {
         fontSize: 25,
     },
-    pagesButton: {
-        height: 50,
+    pagesWrapper: {
         flexDirection: 'row',
-        alignItems: 'center',
-        alignContent: 'center',
-        alignSelf: 'center' 
+        justifyContent: 'center',
+        marginTop: 15,
+        height: 100
     },
-    leftPageButton: {
-        height: 50
+    pageButton: {
+        backgroundColor: 'rgba(237, 255, 0, 0.5)',
+        marginVertical: 10,
+        borderWidth: 3,
+        paddingHorizontal: 15
     },
-    rightPageButton: {
-        height: 50
+    pageButtonHover: {
+        backgroundColor: 'rgba(237, 255, 0, 1)',
     },
+    pageButtonLabel: {
+        textAlign: 'center', 
+        fontSize: 50, 
+        fontWeight: 'bold', 
+        color: 'black'
+    }
 });
 
 const ConnectedCatalog = connect(Catalog);
