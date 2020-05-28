@@ -61,9 +61,10 @@ class CurrentMovie extends React.Component {
         <Text style={styles.plot}>{movie.plot}</Text>
         <GazeButton
           duration={400}
+          style={styles.playButton}
           onClick={() => this._playVideo(movie.assetVideo)}
           render={() => (
-            <Text style={styles.pageButtonLabel}> 
+            <Text style={styles.playButtonLabel}> 
                 PLAY
             </Text>      
           )}
@@ -85,9 +86,17 @@ const styles = StyleSheet.create({
         alignItems: 'stretch',
         padding: 10,
     },
-    movieButton: {
-      height: 300,
-      backgroundColor: '#000000',
+    playButton: {
+      height: 70,
+      width: 120,
+      fontSize: 50,
+      color: 'black',
+      backgroundColor: 'rgba(237, 255, 0, 0.8)',
+      overflow: 'hidden',
+    },
+    playButtonLabel: {
+      fontSize: 50,
+      color: 'black',
       overflow: 'hidden',
     },
     name: {
