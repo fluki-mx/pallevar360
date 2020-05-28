@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { StyleSheet, Text, View, VrButton, NativeModules } from 'react-360';
+import { StyleSheet, Text, View, VrButton, NativeModules, Environment } from 'react-360';
+import { default as VideoModule } from 'VideoModule';
 import GazeButton from "react-360-gaze-button";
 import { connect } from '../utils/Store';
 
@@ -8,6 +9,23 @@ class CurrentMovie extends React.Component {
   state = {
     gazed: false
   };
+
+  constructor(props) {
+    super(props)
+    this.player = VideoModule.createPlayer('myplayer');
+  }
+
+  _playVideo = (uriVideo) => {
+    console.log(uriVideo)
+    this.player.play({
+      source: { url: uriVideo }, // provide the path to the video
+      muted: false,
+      volume: 0.5,
+    });
+    
+    // Display the background video on the Environment
+    Environment.setBackgroundVideo('myplayer');
+  }
 
   setGazed = () => {
     this.setState({ gazed: true });
@@ -42,19 +60,12 @@ class CurrentMovie extends React.Component {
         <Text style={styles.filmmaker}>{movie.filmmaker}</Text>
         <Text style={styles.plot}>{movie.plot}</Text>
         <GazeButton
-          duration={3000}
-          onClick={this.setGazed}
-          onEnter={() => console.log('ENTER')}
-          render={(remainingTime, isGazed) => (
-            <View style={styles.greetingBox}>
-              <Text style={styles.greeting}>
-                {gazed
-                  ? "You have gazed me"
-                  : isGazed
-                    ? remainingTime
-                    : "Gaze me"}
-              </Text>
-            </View>
+          duration={400}
+          onClick={() => this._playVideo(movie.assetVideo)}
+          render={() => (
+            <Text style={styles.pageButtonLabel}> 
+                PLAY
+            </Text>      
           )}
         />
       </View>

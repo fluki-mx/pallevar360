@@ -72,9 +72,9 @@ class Pages extends React.Component {
                 {
                     this.props.prev &&
                         <PageButton 
-                        func='prev' 
-                        stylish={{ marginRight: 30 }}
-                        pageNum={this.props.prev}
+                            func='prev' 
+                            stylish={{ marginRight: 30 }}
+                            pageNum={this.props.prev}
                         />
                 }
                 {
@@ -128,8 +128,8 @@ const styles = StyleSheet.create({
         width: 400,
         height: 600,
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        borderColor: '#EDFF00',
-        borderWidth: 10,
+        borderColor: 'rgba(237, 255, 0, 0.4)',
+        borderWidth: 7,
         flexDirection: 'column',
         justifyContent: 'flex-start',
         alignItems: 'stretch',
@@ -170,13 +170,13 @@ const styles = StyleSheet.create({
         height: 100
     },
     pageButton: {
-        backgroundColor: 'rgba(237, 255, 0, 0.5)',
+        backgroundColor: 'rgba(237, 255, 0, 1)',
         marginVertical: 10,
         borderWidth: 3,
         paddingHorizontal: 15
     },
     pageButtonHover: {
-        backgroundColor: 'rgba(237, 255, 0, 1)',
+        backgroundColor: 'rgba(237, 255, 0, 0.7)',
     },
     pageButtonLabel: {
         textAlign: 'center', 
