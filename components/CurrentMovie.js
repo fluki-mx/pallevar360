@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, Text, View, VrButton, NativeModules, Environment } from 'react-360';
-import { default as VideoModule } from 'VideoModule';
+import VideoModule from 'VideoModule';
 import GazeButton from "react-360-gaze-button";
 import { connect } from '../utils/Store';
 
@@ -15,16 +15,18 @@ class CurrentMovie extends React.Component {
     this.player = VideoModule.createPlayer('myplayer');
   }
 
-  _playVideo = (uriVideo) => {
-    console.log(uriVideo)
+  _playVideo = (uriVideo) => {  
+    // Display the background video on the Environment
     this.player.play({
       source: { url: uriVideo }, // provide the path to the video
       muted: false,
       volume: 0.5,
+      autoPlay: false,
     });
-    
-    // Display the background video on the Environment
+
     Environment.setBackgroundVideo('myplayer');
+    
+    this.player.resume();
   }
 
   setGazed = () => {
@@ -89,8 +91,6 @@ const styles = StyleSheet.create({
     playButton: {
       height: 70,
       width: 120,
-      fontSize: 50,
-      color: 'black',
       backgroundColor: 'rgba(237, 255, 0, 0.8)',
       overflow: 'hidden',
     },
