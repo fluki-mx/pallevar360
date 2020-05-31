@@ -73,7 +73,7 @@ class Pages extends React.Component {
                     this.props.prev &&
                         <PageButton 
                             func='prev' 
-                            stylish={{ marginRight: 30 }}
+                            stylish={{ marginRight: 50 }}
                             pageNum={this.props.prev}
                         />
                 }
@@ -81,7 +81,7 @@ class Pages extends React.Component {
                     this.props.next &&
                         <PageButton 
                             func='next' 
-                            stylish={{ marginLeft: 30 }}
+                            stylish={{ marginLeft: 50 }}
                             pageNum={this.props.next}
                         />
                 }
@@ -169,18 +169,18 @@ const styles = StyleSheet.create({
         height: 100
     },
     pageButton: {
-        backgroundColor: 'rgba(237, 255, 0, 0.4)',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
         marginVertical: 10,
         paddingHorizontal: 15
     },
     pageButtonHover: {
-        backgroundColor: 'rgba(237, 255, 0, 0.7)',
+        backgroundColor: 'rgba(0, 0, 0, 0.4)',
     },
     pageButtonLabel: {
         textAlign: 'center', 
         fontSize: 50, 
         fontWeight: 'bold', 
-        color: 'black'
+        color: 'rgb(237, 255, 0)'
     }
 });
 
