@@ -6,21 +6,19 @@ import { connect } from '../utils/Store';
 
 class CurrentMovie extends React.Component {
 
-  state = {
-    gazed: false
-  };
-
   constructor(props) {
     super(props)
     this.player = VideoModule.createPlayer('myplayer');
   }
 
-  _playVideo = (uriVideo) => {  
+  _playVideo = (videoURL, videoStereo=null) => {  
     // Display the background video on the Environment
+
     this.player.play({
-      source: { url: uriVideo }, // provide the path to the video
+      source: { url: videoURL }, // provide the path to the video
       muted: false,
       volume: 0.5,
+      stereo: videoStereo ? videoStereo : null,
       autoPlay: false,
     });
 
@@ -28,10 +26,6 @@ class CurrentMovie extends React.Component {
     
     this.player.resume();
   }
-
-  setGazed = () => {
-    this.setState({ gazed: true });
-  };
 
   clickButton = (event) => {
     NativeModules.Location.replace('https://google.com.mx', '_blank')
@@ -52,10 +46,7 @@ class CurrentMovie extends React.Component {
         </View>
       );
     }
-
     const movie = this.props.catalog.data.find(movie => movie.id === this.props.activeMovie);
-    const { gazed } = this.state;
-
     return (
       <View style={styles.wrapper}>
         <Text style={styles.name}>{movie.title}</Text>
@@ -64,7 +55,7 @@ class CurrentMovie extends React.Component {
         <GazeButton
           duration={400}
           style={styles.playButton}
-          onClick={() => this._playVideo(movie.assetVideo)}
+          onClick={() => this._playVideo(movie.uri, movie.stereo)}
           render={() => (
             <Text style={styles.playButtonLabel}> 
                 PLAY

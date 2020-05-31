@@ -25,9 +25,6 @@ function updateComponents() {
 
 export function initialize() {
   const catalog = Paginator(State.activePage, 3)
-
-  console.log(catalog)
-
   State.catalog = catalog
   updateComponents( )
 }

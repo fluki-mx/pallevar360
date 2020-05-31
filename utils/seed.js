@@ -5,9 +5,9 @@ export default [
         plot: 'Sinópsis ... ',
         filmmaker: 'Jesús Pérez Irigoyen',
         country: 'México',
-        assetVideo: 'https://duhaw0maiynh4.cloudfront.net/sample_360.mp4',
-        preview: 'https://png.pngtree.com/thumb_back/fw800/back_our/20190623/ourmid/pngtree-red-geometric-lines-business-card-background-image_239790.jpg',
-        stereo: undefined
+        uri: 'https://duhaw0maiynh4.cloudfront.net/cosmonaute_360.mp4',
+        preview: 'https://d13z4wu9p201is.cloudfront.net/cosmonaute_360.png',
+        stereo: '3DBT'
     },
     {
         id: 2,
@@ -15,8 +15,8 @@ export default [
         plot: 'Sinópsis ... ',
         filmmaker: 'Arnold Abadie',
         country: 'México',
-        assetVideo: 'kauyumari_360.mp4',
-        preview: 'https://png.pngtree.com/thumb_back/fw800/back_our/20190623/ourmid/pngtree-red-geometric-lines-business-card-background-image_239790.jpg',
+        uri: 'https://duhaw0maiynh4.cloudfront.net/kauyumari_360.mp4',
+        preview: 'https://d13z4wu9p201is.cloudfront.net/kauyumari_360.png',
         stereo: undefined
     },
     {
@@ -25,27 +25,27 @@ export default [
         plot: 'Sinópsis ... ',
         filmmaker: 'Stuart Campbell',
         country: 'Australia',
-        assetVideo: 'future_dreaming_360.mp4',
-        preview: 'https://png.pngtree.com/thumb_back/fw800/back_our/20190623/ourmid/pngtree-red-geometric-lines-business-card-background-image_239790.jpg',
+        uri: 'https://duhaw0maiynh4.cloudfront.net/futureDreaming_360.mp4',
+        preview: 'https://d13z4wu9p201is.cloudfront.net/futureDreaming_360.png',
         stereo: undefined
     },
     {
         id: 4,
-        title: 'Tetris',
-        plot: '',
-        filmmaker: '👻📹',
-        country: '🌎',
-        assetVideo: 'future_dreaming_360.mp4',
-        preview: 'https://png.pngtree.com/thumb_back/fw800/back_our/20190623/ourmid/pngtree-red-geometric-lines-business-card-background-image_239790.jpg',
+        title: 'El Sueño de la Hija del Jaguar',
+        plot: 'Sinópsis ... ',
+        filmmaker: 'Alfredo Salazar Caro',
+        country: 'México',
+        uri: 'https://duhaw0maiynh4.cloudfront.net/hijaJaguar_360.mp4',
+        preview: 'https://d13z4wu9p201is.cloudfront.net/hijaJaguar_360.png',
         stereo: undefined
     },
     {
         id: 5,
-        title: 'Soccer',
+        title: 'The Interpretation of Dreams',
         plot: 'Sinópsis ... ',
         filmmaker: '👻📹',
         country: '🌎',
-        assetVideo: 'future_dreaming_360.mp4',
+        uri: 'https://duhaw0maiynh4.cloudfront.net/theInterpretationOfDreams_360.mp4',
         preview: 'https://png.pngtree.com/thumb_back/fw800/back_our/20190623/ourmid/pngtree-red-geometric-lines-business-card-background-image_239790.jpg',
         stereo: undefined
     },
@@ -55,7 +55,7 @@ export default [
         plot: 'Sinópsis ... ',
         filmmaker: '👻📹',
         country: '🌎',
-        assetVideo: 'future_dreaming_360.mp4',
+        uri: 'future_dreaming_360.mp4',
         preview: 'https://png.pngtree.com/thumb_back/fw800/back_our/20190623/ourmid/pngtree-red-geometric-lines-business-card-background-image_239790.jpg',
         stereo: undefined
     },
@@ -65,7 +65,7 @@ export default [
         plot: 'Sinópsis ... ',
         filmmaker: '👻📹',
         country: '🌎',
-        assetVideo: 'future_dreaming_360.mp4',
+        uri: 'future_dreaming_360.mp4',
         preview: 'https://png.pngtree.com/thumb_back/fw800/back_our/20190623/ourmid/pngtree-red-geometric-lines-business-card-background-image_239790.jpg',
         stereo: undefined
     },
@@ -75,7 +75,7 @@ export default [
         plot: 'Sinópsis ... ',
         filmmaker: '👻📹',
         country: '🌎',
-        assetVideo: 'future_dreaming_360.mp4',
+        uri: 'future_dreaming_360.mp4',
         preview: 'https://png.pngtree.com/thumb_back/fw800/back_our/20190623/ourmid/pngtree-red-geometric-lines-business-card-background-image_239790.jpg',
         stereo: undefined
     },
@@ -85,7 +85,7 @@ export default [
         plot: 'Sinópsis ... ',
         filmmaker: '👻📹',
         country: '🌎',
-        assetVideo: 'future_dreaming_360.mp4',
+        uri: 'future_dreaming_360.mp4',
         preview: 'https://png.pngtree.com/thumb_back/fw800/back_our/20190623/ourmid/pngtree-red-geometric-lines-business-card-background-image_239790.jpg',
         stereo: undefined
     },
@@ -95,7 +95,7 @@ export default [
         plot: 'Sinópsis ... ',
         filmmaker: '👻📹',
         country: '🌎',
-        assetVideo: 'future_dreaming_360.mp4',
+        uri: 'future_dreaming_360.mp4',
         preview: 'https://png.pngtree.com/thumb_back/fw800/back_our/20190623/ourmid/pngtree-red-geometric-lines-business-card-background-image_239790.jpg',
         stereo: undefined
     },
@@ -105,7 +105,7 @@ export default [
         plot: 'Sinópsis ... ',
         filmmaker: '👻📹',
         country: '🌎',
-        assetVideo: 'future_dreaming_360.mp4',
+        uri: 'future_dreaming_360.mp4',
         preview: 'https://png.pngtree.com/thumb_back/fw800/back_our/20190623/ourmid/pngtree-red-geometric-lines-business-card-background-image_239790.jpg',
         stereo: undefined
     },

@@ -22,7 +22,7 @@ class MovieButton extends React.Component {
                 onClick={() => activeMovie(this.props.id)}
                 render={() => (
                     <React.Fragment>
-                        <Image style={styles.movieButtonPreview} source={asset('preview.jpg')} />
+                        <Image style={styles.movieButtonPreview} source={{uri: this.props.preview}} />
                         <View style={[styles.movieButtonInfo, this.state.hover ? styles.movieButtonInfoHover : null]}>
                         <View style={styles.movieButtonLabel}>
                             <Text style={styles.movieButtonTitle}>{this.props.title}</Text>
@@ -152,7 +152,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(0, 0, 0, 0)',
     },
     movieButtonLabel: {
-        backgroundColor: 'rgba(0, 0, 0, 0.8)',
         paddingHorizontal: 10,
         paddingVertical: 2,
         alignSelf: 'flex-start',
@@ -170,9 +169,8 @@ const styles = StyleSheet.create({
         height: 100
     },
     pageButton: {
-        backgroundColor: 'rgba(237, 255, 0, 1)',
+        backgroundColor: 'rgba(237, 255, 0, 0.4)',
         marginVertical: 10,
-        borderWidth: 3,
         paddingHorizontal: 15
     },
     pageButtonHover: {
