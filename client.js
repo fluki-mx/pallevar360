@@ -18,8 +18,9 @@ function init(bundle, parent, options = {}) {
   const rightPanel = new Surface(600, 600, Surface.SurfaceShape.Flat );
   rightPanel.setAngle(0.35, 0);
 
+  // const bottomPanel = new Surface(1000, 50, Surface.SurfaceShape.Flat);
+  // bottomPanel.setAngle(0, 0);
 
-  // Render your app content to the default cylinder surface
   r360.renderToSurface(
     r360.createRoot('Catalog'),
     leftPanel,
@@ -29,6 +30,11 @@ function init(bundle, parent, options = {}) {
     r360.createRoot('CurrentMovie'),
     rightPanel,
   );
+
+  // r360.renderToSurface(
+  //   r360.createRoot('Controls'),
+  //   bottomPanel,
+  // );
 
   // Load the initial environment
   r360.compositor.setBackground(r360.getAssetURL('world_360.png'));

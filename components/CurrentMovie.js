@@ -2,7 +2,7 @@ import * as React from 'react';
 import { StyleSheet, Text, View, VrButton, NativeModules, Environment } from 'react-360';
 import VideoModule from 'VideoModule';
 import GazeButton from "react-360-gaze-button";
-import { connect } from '../utils/Store';
+import { connect, changePlayerStatus } from '../utils/Store';
 
 class CurrentMovie extends React.Component {
 
@@ -25,6 +25,8 @@ class CurrentMovie extends React.Component {
     Environment.setBackgroundVideo('myplayer');
     
     this.player.resume();
+
+    changePlayerStatus();
   }
 
   clickButton = (event) => {
@@ -32,6 +34,13 @@ class CurrentMovie extends React.Component {
   } 
   
   render() {
+
+    console.log(this.props)
+
+
+    if (this.props.playing) {
+      return (<View></View>)
+    }
 
     if (!this.props.catalog) {
       return <View style={styles.wrapper}></View>;

@@ -22,7 +22,7 @@ class MovieButton extends React.Component {
                 onClick={() => activeMovie(this.props.id)}
                 render={() => (
                     <React.Fragment>
-                        <Image style={styles.movieButtonPreview} source={{uri: this.props.preview}} />
+                        <Image crossorigin="Access-Control-Allow-Origin" style={styles.movieButtonPreview} source={{uri: this.props.preview}} />
                         <View style={[styles.movieButtonInfo, this.state.hover ? styles.movieButtonInfoHover : null]}>
                         <View style={styles.movieButtonLabel}>
                             <Text style={styles.movieButtonTitle}>{this.props.title}</Text>
@@ -90,37 +90,48 @@ class Pages extends React.Component {
     }
 }
 
-const Catalog = props => {
+class Catalog extends React.Component {
 
-    if (!props.catalog) {
-        return (
-          <View style={styles.wrapper}>
-            <Text>Loading...</Text>
-          </View>
-        );
+    constructor(props) {
+      super(props)
     }
 
-    return (
-        <View style={styles.wrapper}>
-            {
-                props.catalog.data.map((movie, i) => (
-                    <MovieButton
-                        key={i}
-                        id={movie.id}
-                        title={movie.title}
-                        filmmaker={movie.filmmaker}
-                        preview={movie.preview}
-                    />
-                ))
-            }
+    render() {
 
-            <Pages 
-                prev={props.catalog.pre_page}
-                next={props.catalog.next_page}
-            />
+        if (this.props.playing) {
+            return (<View></View>)
+        }
+        
+        if (!this.props.catalog) {
+            return (
+              <View style={styles.wrapper}>
+                <Text>Loading...</Text>
+              </View>
+            );
+        }
+
+        return (
+            <View style={styles.wrapper}>
+                {
+                    this.props.catalog.data.map((movie, i) => (
+                        <MovieButton
+                            key={i}
+                            id={movie.id}
+                            title={movie.title}
+                            filmmaker={movie.filmmaker}
+                            preview={movie.preview}
+                        />
+                    ))
+                }
+
+                <Pages 
+                    prev={this.props.catalog.pre_page}
+                    next={this.props.catalog.next_page}
+                />
             
-        </View>
-    )
+            </View>
+        )
+    }
 }
 
 const styles = StyleSheet.create({
@@ -174,7 +185,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15
     },
     pageButtonHover: {
-        backgroundColor: 'rgba(0, 0, 0, 0.4)',
+        backgroundColor: 'rgba(0, 0, 0, 0.1)',
     },
     pageButtonLabel: {
         textAlign: 'center', 

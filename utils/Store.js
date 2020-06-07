@@ -13,6 +13,7 @@ const State = {
   catalog: undefined,
   activePage: 1,
   activeMovie: -1,
+  playing: false
 };
 
 const listeners = new Set();
@@ -24,13 +25,18 @@ function updateComponents() {
 }
 
 export function initialize() {
-  const catalog = Paginator(State.activePage, 3)
-  State.catalog = catalog
-  updateComponents( )
+  const catalog = Paginator(State.activePage, 3);
+  State.catalog = catalog;
+  updateComponents();
 }
 
 export function activeMovie(id) {
   State.activeMovie = id;
+  updateComponents();
+}
+
+export function changePlayerStatus() {
+  State.playing = !State.playing;
   updateComponents();
 }
 
@@ -48,12 +54,14 @@ export function connect(Component) {
     state = {
       catalog: State.catalog,
       activeMovie: State.activeMovie,
+      playing: State.playing
     };
 
     _listener = () => {
       this.setState({
         catalog: State.catalog,
         activeMovie: State.activeMovie,
+        playing: State.playing
       });
     };
 
@@ -71,6 +79,7 @@ export function connect(Component) {
           {...this.props}
           catalog={this.state.catalog}
           activeMovie={this.state.activeMovie}
+          playing={this.state.playing}
         />
       );
     }

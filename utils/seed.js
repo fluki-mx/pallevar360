@@ -35,7 +35,7 @@ export default [
         plot: 'Sinópsis ... ',
         filmmaker: 'Alfredo Salazar Caro',
         country: 'México',
-        uri: 'https://duhaw0maiynh4.cloudfront.net/hijaJaguar_360.mp4',
+        uri: 'https://duhaw0maiynh4.cloudfront.net/hijaJagua<r_360.mp4',
         preview: 'https://d13z4wu9p201is.cloudfront.net/hijaJaguar_360.png',
         stereo: undefined
     },
