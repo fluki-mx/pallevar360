@@ -25,7 +25,9 @@ class MovieButton extends React.Component {
                         <Image crossorigin="Access-Control-Allow-Origin" style={styles.movieButtonPreview} source={{uri: this.props.preview}} />
                         <View style={[styles.movieButtonInfo, this.state.hover ? styles.movieButtonInfoHover : null]}>
                         <View style={styles.movieButtonLabel}>
-                            <Text style={styles.movieButtonTitle}>{this.props.title}</Text>
+                            <Text style={styles.movieButtonTitle}>
+                                {this.props.title}
+                            </Text>
                         </View>
                         <View style={styles.movieButtonLabel}>
                             <Text style={styles.movieButtonFilmmaker}>{this.props.filmmaker}</Text>
@@ -168,10 +170,11 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-start',
     },
     movieButtonTitle: {
-        fontSize: 45,
+        fontSize: 35,
+        fontWeight: 'bold'
     },
     movieButtonFilmmaker: {
-        fontSize: 25,
+        fontSize: 25
     },
     pagesWrapper: {
         flexDirection: 'row',
@@ -191,7 +194,7 @@ const styles = StyleSheet.create({
         textAlign: 'center', 
         fontSize: 50, 
         fontWeight: 'bold', 
-        color: 'rgb(237, 255, 0)'
+        color: 'rgb(237, 255, 0)',
     }
 });
 

@@ -4,7 +4,34 @@ import VideoModule from 'VideoModule';
 import GazeButton from "react-360-gaze-button";
 import { connect, changePlayerStatus } from '../utils/Store';
 
+// const { VideoModule } = NativeModules;
+
+class MiniSection extends React.Component {
+  render() {
+    if (this.props.choice === 'plot') {
+      return (
+        <View style={styles.miniWrapper}>
+          <View style={styles.miniSectionBar}>
+          
+          </View>
+          <View style={styles.miniSectionContent}>
+              <Text style={styles.plotLabel}>{this.props.plot}</Text>
+          </View>
+        </View>
+      )
+    } else {
+      return (
+        <View></View>
+      )
+    }
+  }
+}
+
 class CurrentMovie extends React.Component {
+
+  state = {
+    section: 'plot'
+  }
 
   constructor(props) {
     super(props)
@@ -14,10 +41,11 @@ class CurrentMovie extends React.Component {
   _playVideo = (videoURL, videoStereo=null) => {  
     // Display the background video on the Environment
 
+    console.log(videoURL)
+
     this.player.play({
       source: { url: videoURL }, // provide the path to the video
-      muted: false,
-      volume: 0.5,
+      muted: true,
       stereo: videoStereo ? videoStereo : null,
       autoPlay: false,
     });
@@ -50,7 +78,7 @@ class CurrentMovie extends React.Component {
       return (
         <View style={styles.wrapper}>
           <View style={{flex: 1, justifyContent: 'center'}}>
-            <Text style={{textAlign: 'center', fontSize: 70}}>Selecciona una película</Text>
+            <Text style={{textAlign: 'center', fontSize: 100}}>Selecciona una película</Text>
           </View>
         </View>
       );
@@ -58,10 +86,13 @@ class CurrentMovie extends React.Component {
     const movie = this.props.catalog.data.find(movie => movie.id === this.props.activeMovie);
     return (
       <View style={styles.wrapper}>
-        <Text style={styles.name}>{movie.title}</Text>
-        <Text style={styles.filmmaker}>{movie.filmmaker}</Text>
-        <Text style={styles.plot}>{movie.plot}</Text>
-        <GazeButton
+        <Text style={styles.nameLabel}>{movie.title}</Text>
+        <Text style={styles.filmmakerLabel}>{movie.filmmaker}</Text>
+        <MiniSection 
+          plot={movie.plot}
+          choice={this.state.section}
+        />
+        {/* <GazeButton
           duration={400}
           style={styles.playButton}
           onClick={() => this._playVideo(movie.uri, movie.stereo)}
@@ -70,13 +101,14 @@ class CurrentMovie extends React.Component {
                 PLAY
             </Text>      
           )}
-        />
+        /> */}
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+    // CurrentMovie Component
     wrapper: {
         width: 600,
         height: 600,
@@ -85,7 +117,7 @@ const styles = StyleSheet.create({
         borderWidth: 7,
         flexDirection: 'column',
         justifyContent: 'flex-start',
-        alignItems: 'stretch',
+        alignItems: 'center',
         padding: 10,
     },
     playButton: {
@@ -99,16 +131,48 @@ const styles = StyleSheet.create({
       color: 'black',
       overflow: 'hidden',
     },
-    name: {
+    nameLabel: {
+      fontSize: 60,
+      fontWeight: 'bold',
+      textAlign: 'center',
+    },
+    filmmakerLabel: {
         fontSize: 30,
         textAlign: 'center',
     },
-    filmmaker: {
-        fontSize: 20,
-        textAlign: 'center',
+
+    // MiniSection
+    miniWrapper: {
+      width: 550,
+      height: 300,
+      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      borderWidth: 0,
+      flexDirection: 'column',
+      alignItems: 'center'
     },
-    plot: {
-        fontSize: 16
+    miniSectionBar: {
+      width: 550,
+      height: 50,
+      backgroundColor: 'rgba(125, 128, 0, 1)',
+      flexDirection: 'row',
+      alignItems: 'center'
+    },
+    miniSectionContent: {
+      width: 550,
+      height: 200,
+      backgroundColor: 'rgba(0, 0, 0, 0.7)',
+      marginTop: 0,
+      paddingLeft: 15,
+      paddingRight: 15,
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    plotLabel: {
+        paddingTop: 0,
+        marginTop: 0,
+        fontSize: 34,
+        textAlign: 'center',
     },
 });
   

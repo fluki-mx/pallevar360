@@ -11,15 +11,17 @@ class Controls extends React.Component {
 
     render() {
 
-        console.log('HOLA')
-
-        return (
-            <View style={styles.wrapper}>
-                <Text style={styles.controlLabel}>
-                    Controls
-                </Text>
-            </View>
-        )
+        if (!this.props.playing) {
+            return (<View></View>)
+        } else {
+            return (
+                <View style={styles.wrapper}>
+                    <Text style={styles.controlLabel}>
+                        Controls
+                    </Text>
+                </View>
+            )
+        }
     }
 
 }

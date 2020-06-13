@@ -13,4 +13,4 @@ Store.initialize(seed);
 
 AppRegistry.registerComponent('Catalog', () => Catalog);
 AppRegistry.registerComponent('CurrentMovie', () => CurrentMovie);
-// AppRegistry.registerComponent('Controls', () => Controls);
+AppRegistry.registerComponent('Controls', () => Controls);

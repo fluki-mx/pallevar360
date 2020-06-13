@@ -18,8 +18,8 @@ function init(bundle, parent, options = {}) {
   const rightPanel = new Surface(600, 600, Surface.SurfaceShape.Flat );
   rightPanel.setAngle(0.35, 0);
 
-  // const bottomPanel = new Surface(1000, 50, Surface.SurfaceShape.Flat);
-  // bottomPanel.setAngle(0, 0);
+  const bottomPanel = new Surface(1000, 50, Surface.SurfaceShape.Flat);
+  bottomPanel.setAngle(0, 0);
 
   r360.renderToSurface(
     r360.createRoot('Catalog'),
@@ -31,10 +31,10 @@ function init(bundle, parent, options = {}) {
     rightPanel,
   );
 
-  // r360.renderToSurface(
-  //   r360.createRoot('Controls'),
-  //   bottomPanel,
-  // );
+  r360.renderToSurface(
+    r360.createRoot('Controls'),
+    bottomPanel,
+  );
 
   // Load the initial environment
   r360.compositor.setBackground(r360.getAssetURL('world_360.png'));
