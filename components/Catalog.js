@@ -3,15 +3,16 @@ import { Image, StyleSheet, Text, View, VrButton, asset} from 'react-360';
 import { connect, activeMovie, changePage } from '../utils/Store';
 import GazeButton from "react-360-gaze-button";
 
+
+/**
+ * Bótones de Películas, para renderizar la Película Actual seleccionada.
+ */
+
 class MovieButton extends React.Component {
     state = {
       hover: false,
     };
 
-    // componentDidMount() {
-    //     console.log(this.props)
-    // }
-   
     render() {
         return (
             <GazeButton
@@ -40,6 +41,10 @@ class MovieButton extends React.Component {
     }
 }
 
+/**
+ * Botones del Paginador, anterior o siguiente
+ */
+
 class PageButton extends React.Component {
     state = {
       hover: false,
@@ -65,7 +70,9 @@ class PageButton extends React.Component {
 }
 
 
-
+/**
+ * Componente Paginador del Catálogo
+ */
 class Pages extends React.Component {
 
     render() {
@@ -92,6 +99,10 @@ class Pages extends React.Component {
     }
 }
 
+/**
+ * Componente principal conectado con el Store, 
+ * renderiza el catalogo de Bótones de Películas y el Paginador
+ */
 class Catalog extends React.Component {
 
     constructor(props) {
@@ -136,7 +147,12 @@ class Catalog extends React.Component {
     }
 }
 
+/**
+ * Estilo React-Native de los Componentes
+ */
 const styles = StyleSheet.create({
+
+    // Catalog
     wrapper: {
         width: 400,
         height: 600,
@@ -147,6 +163,8 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'stretch',
     },
+
+    // MovieButton
     movieButton: {
         height: 150,
         backgroundColor: '#000000',
@@ -176,6 +194,8 @@ const styles = StyleSheet.create({
     movieButtonFilmmaker: {
         fontSize: 25
     },
+
+    // Pages
     pagesWrapper: {
         flexDirection: 'row',
         justifyContent: 'center',
