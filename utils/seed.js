@@ -1,7 +1,11 @@
+/**
+ * Semilla que contiene la info
+ */
+
 export default [
     {
         id: 1,
-        title: 'COSMONAUTE 360',
+        title: 'COSMONAUTE  360',
         plot: 'En su camino a casa, un explorador espacial choca accidentalmente con un asteroide y se ve obligado a aterrizar en un planeta desconocido.',
         plotv2: [
             'En su camino a casa, un explorador espacial choca accidentalmente con un asteroide y se ve obligado a aterrizar en un planeta desconocido.',
