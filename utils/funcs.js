@@ -1,5 +1,12 @@
+/**
+ * Contiene funciones para procesos de la Plataforma
+ */
+
 import catalog from './seed'
 
+/**
+ * Función para paginar el catálogo.
+ */
 export function Paginator(page, per_page) {
  
     var page = page || 1,
