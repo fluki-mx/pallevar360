@@ -1,14 +1,16 @@
+/**
+ * Store de la Plataforma para compartir data entre múltiples componentes,
+ * funciona como redux.
+ */
+
 import * as React from 'react';
 import { Paginator } from './funcs';
 
-/**
- * If you want to share data between multiple root components, you'll need a
- * global store like Redux. This is similar to building a web app where you
- * want to synchronize data between a sidebar and a main view - just extended
- * into three dimensions.
- * To simplify this sample, we implement a trivial Redux-like store that will
- * ensure all of our elements are synchronized.
- */
+// State Global, contiene: 
+//  - El cátalogo de películas
+//  - Pagina actual 
+//  - Película actual
+//  - Si el reproductor esta en play.
 const State = {
   catalog: undefined,
   activePage: 1,
