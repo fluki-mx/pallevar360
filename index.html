@@ -5,15 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   </head>
   <body>
-    <!-- Attachment point for your app -->
     <div id="container"></div>
+    <script>
+      // CDN de WebVR Polyfill
+    </script>
     <script src='https://cdn.jsdelivr.net/npm/webvr-polyfill@latest/build/webvr-polyfill.js'></script>
     <script>
+      // Inicializador de WebVR para el soporte con CardBoard
       var polyfill = new WebVRPolyfill();
     </script>
     <script src="./client.bundle?platform=vr"></script>
     <script>
-      // Initialize the React 360 application
+      // Inicializador la aplicación con React 360
       React360.init(
         'index.bundle?platform=vr&dev=true',
         document.getElementById('container'),
