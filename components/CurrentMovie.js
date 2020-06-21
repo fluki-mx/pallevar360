@@ -237,7 +237,9 @@ class Player extends React.Component {
   constructor(props) {
     super(props)
     // Setup del Reproductor de Videos
-    this.player = VideoModule.createPlayer('myplayer');
+    if (!this.player) {
+      this.player = VideoModule.createPlayer('myplayer');
+    }
   }
 
   // Función para reproducir Videos
