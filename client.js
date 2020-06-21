@@ -21,7 +21,7 @@ function init(bundle, parent, options = {}) {
   rightPanel.setAngle(0.35, 0);
 
   // Declaración del Panel Inferior
-  const bottomPanel = new Surface(1000, 50, Surface.SurfaceShape.Flat);
+  const bottomPanel = new Surface(1000, 500, Surface.SurfaceShape.Flat);
   bottomPanel.setAngle(0, 0);
 
   // Creación del nodo Catalog, relacionado con el Panel Izquierdo

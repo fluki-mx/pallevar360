@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, VrButton, NativeModules, Environment } from 're
 import VideoModule from 'VideoModule';
 import GazeButton from "react-360-gaze-button";
 import { connect, changePlayerStatus } from '../utils/Store';
+import { PlotPaginator } from '../utils/funcs';
 
 class MiniPaginationButton extends React.Component {
   state = {
@@ -23,6 +24,60 @@ class MiniPaginationButton extends React.Component {
               )}
           />
       );
+  }
+}
+
+class SocialButton extends React.Component {
+   
+  state = {
+    hover: false,
+  };
+
+  getButtonStyle(type) {
+    switch (type) {
+      case 'www':
+        return styles.miniWWWButton
+      case 'fb':
+        return styles.miniFBButton
+      case 'ig':
+        return styles.miniIGButton
+      case 'tw':
+        return styles.miniTWButton
+      default:
+        break;
+    }
+  }
+
+  getTextStyle(type) {
+    switch (type) {
+      case 'www':
+        return styles.miniBarButtonLabel
+      case 'fb':
+        return styles.miniBarButtonLabelWhite
+      case 'ig':
+        return styles.miniBarButtonLabelWhite
+      case 'tw':
+        return styles.miniBarButtonLabel
+      default:
+        break;
+    }
+  }
+
+  render() {
+    return (
+      <GazeButton
+        style={[this.getButtonStyle(this.props.type), this.state.hover ? styles.miniBarButtonHover : null]}
+        duration={400} 
+        onEnter={() => this.setState({hover: true})}
+        onExit={() => this.setState({hover: false})}
+        onClick={() => NativeModules.LinkingManager.openURL(this.props.uri)}
+        render={() => (
+            <Text style={this.getTextStyle(this.props.type)}> 
+                { this.props.title } 
+            </Text>      
+          )}
+      />
+    )
   }
 }
 
@@ -52,6 +107,17 @@ class MiniBarButton extends React.Component {
 }
 
 class MiniContent extends React.Component {
+  
+  state = {
+    activePagePlot: 1,
+  };
+
+  componentDidMount() {
+    console.log(this.props.plot)
+    console.log(this.state)
+    const plotPages = PlotPaginator(this.state.activePagePlot, this.props.plot);
+    console.log(plotPages)
+  }
 
   handlePlotPage(number) {
 
@@ -94,48 +160,84 @@ class MiniContent extends React.Component {
         <View style={styles.miniContentInfo}>
           {
             this.props.activeChoice === 'instructions' ?
-            <Text style={styles.plotLabel}>Instrucciones...</Text>
+          <Text style={styles.plotLabel}>
+            {this.props.instruction.text}
+          </Text>
             : this.props.activeChoice === 'plot' ?
-            <Text style={styles.plotLabel}>{this.props.plot}</Text>
+            <Text style={styles.plotLabel}>
+             Sinópsis
+            </Text>
             : this.props.activeChoice === 'social' &&
-            <Text style={styles.plotLabel}>Social...</Text>
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center' }}>
+              { this.props.social.website &&
+                <SocialButton 
+                  type={'www'}
+                  title={'Website'}
+                  uri={this.props.social.website}
+                />
+              }
+
+              { this.props.social.facebook &&
+                <SocialButton 
+                  type={'fb'}
+                  title={'Facebook'}
+                  uri={this.props.social.facebook}
+                />
+              }
+
+              { this.props.social.instagram &&
+                <SocialButton 
+                  type={'ig'}
+                  title={'Instagram'}
+                  uri={this.props.social.instagram}
+                />
+              }
+
+              { this.props.social.twitter &&
+                <SocialButton 
+                  type={'tw'}
+                  title={'Twitter'}
+                  uri={this.props.social.twitter}
+                />
+              }
+              
+              
+            </View>
           }
         </View>
         {
-          this.props.activeChoice === 'plot' &&
-          <View style={styles.miniPaginationWrapper}>
-            <MiniPaginationButton />
-          </View>
+          this.props.activeChoice === 'instructions' ?
+            <View style={styles.miniPaginationWrapper}>
+              <GazeButton
+                style={[styles.miniInstructionButton, this.state.hover ? styles.miniInstructionButtonHover : null]}
+                duration={400} 
+                onEnter={() => this.setState({hover: true})}
+                onExit={() => this.setState({hover: false})}
+                onClick={() => NativeModules.LinkingManager.openURL(this.props.instruction.link)}
+                render={() => (
+                    <Text style={styles.miniBarButtonLabel}> 
+                        Trivia 
+                    </Text>      
+                )}
+              />
+            </View>
+          : this.props.activeChoice === 'plot' &&
+            <View style={styles.miniPaginationWrapper}>
+              <MiniPaginationButton />
+            </View>
         }
       </View>
     )
   }
 }
 
-/**
- * Componente principal, conectado con el Store de la Plataforma
- * renderiza la película actual seleccionada 
- * con el Mini-Contenedor que contiene más detalles del filme y
- * también configura el reproductor de Videos de la Plataforma
- */
-class CurrentMovie extends React.Component {
-
-  state = {
-    section: 'plot'
-  }
-
+class Player extends React.Component {
+  
   // Constructor
   constructor(props) {
     super(props)
     // Setup del Reproductor de Videos
     this.player = VideoModule.createPlayer('myplayer');
-  }
-
-  // Función que cambia la sección activa del Mini-Contenedor
-  changeSection = (name) => {
-    this.setState({
-      section: name
-    })
   }
 
   // Función para reproducir Videos
@@ -158,6 +260,48 @@ class CurrentMovie extends React.Component {
     // Cambia el estatus en el Store para renderizar los controles mientras se reproduce un video
     changePlayerStatus();
   }
+
+  render() {
+    return (
+      <View>
+        {
+          this.props.movies.map((movie, i) => (
+            <GazeButton
+              key={i}
+              duration={400}
+              style={styles.playButton}
+              onClick={() => this._playVideo(movie.uri, movie.stereo)}
+              render={() => (
+                <Text style={styles.playButtonLabel}> 
+                    { movie.title }
+                </Text>      
+              )}
+            /> 
+          ))
+        }
+      </View>
+    )
+  }
+}
+
+/**
+ * Componente principal, conectado con el Store de la Plataforma
+ * renderiza la película actual seleccionada 
+ * con el Mini-Contenedor que contiene más detalles del filme y
+ * también configura el reproductor de Videos de la Plataforma
+ */
+class CurrentMovie extends React.Component {
+
+  state = {
+    section: 'plot'
+  }
+
+  // Función que cambia la sección activa del Mini-Contenedor
+  changeSection = (name) => {
+    this.setState({
+      section: name
+    })
+  }  
   
   render() {
 
@@ -183,10 +327,15 @@ class CurrentMovie extends React.Component {
       <View style={styles.wrapper}>
         <Text style={styles.nameLabel}>{movie.title}</Text>
         <Text style={styles.filmmakerLabel}>{movie.filmmaker}</Text>
-        <MiniContent 
+        <MiniContent
+          instruction={movie.instruction} 
           plot={movie.plot}
+          social={movie.social}
           activeChoice={this.state.section}
           handleChangeChoice={this.changeSection}
+        />
+        <Player 
+          movies={movie.uris}
         />
         {/* <GazeButton
           duration={400}
@@ -220,15 +369,17 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     playButton: {
-      height: 70,
-      width: 120,
+      height: 50,
+      width: 180,
+      marginVertical: 15,
       backgroundColor: 'rgba(237, 255, 0, 0.8)',
       overflow: 'hidden',
     },
     playButtonLabel: {
-      fontSize: 50,
+      fontSize: 30,
       color: 'black',
       overflow: 'hidden',
+      textAlign: 'center'
     },
     nameLabel: {
       fontSize: 60,
@@ -260,6 +411,42 @@ const styles = StyleSheet.create({
       height: 50,
       backgroundColor: 'rgba(237, 255, 0, 0.5)',
     },
+    miniInstructionButton: {
+      width: 184,
+      height: 50,
+      backgroundColor: 'rgba(12, 222, 250, 1)',
+    },
+    miniInstructionButtonHover: {
+      backgroundColor: 'rgba(12, 222, 250, 0.5)',
+    },
+    miniWWWButton: {
+      width: 184,
+      height: 50,
+      marginBottom: 10,
+      marginHorizontal: 10,
+      backgroundColor: 'rgba(227, 244, 250, 1)',
+    },
+    miniFBButton: {
+      width: 184,
+      height: 50,
+      marginBottom: 10,
+      marginHorizontal: 10,
+      backgroundColor: 'rgba(59, 89, 152, 1)',
+    },
+    miniIGButton: {
+      width: 184,
+      height: 50,
+      marginBottom: 10,
+      marginHorizontal: 10,
+      backgroundColor: 'rgba(193, 53, 132, 1)',
+    },
+    miniTWButton: {
+      width: 184,
+      height: 50,
+      marginBottom: 10,
+      marginHorizontal: 10,
+      backgroundColor: 'rgba(0, 172, 238, 1)',
+    },
     miniBarButtonActive: {
       backgroundColor: 'rgba(237, 255, 0, 1)',
     },
@@ -270,6 +457,11 @@ const styles = StyleSheet.create({
       textAlign: 'center', 
       fontSize: 30, 
       color: 'black'
+    },
+    miniBarButtonLabelWhite: {
+      textAlign: 'center', 
+      fontSize: 30, 
+      color: 'white'
     },
     miniContentInfo: {
       width: 552,
