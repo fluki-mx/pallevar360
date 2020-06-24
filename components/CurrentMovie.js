@@ -93,6 +93,7 @@ class MiniBarButton extends React.Component {
       <GazeButton
         style={[styles.miniBarButton, this.state.hover ? styles.miniBarButtonHover : null, this.props.active ? styles.miniBarButtonActive : null]}
         duration={400}
+        disabled={this.props.disabled}
         onEnter={() => this.setState({hover: true})}
         onExit={() => this.setState({hover: false})}
         onClick={() => this.props.handleClick(this.props.section)}
@@ -142,6 +143,7 @@ class MiniContent extends React.Component {
             title={'Instrucciones'}
             active={this.isActive(sections.instructions)}
             section={sections.instructions}
+            disabled={this.props.instruction ? false : true}
             handleClick={this.props.handleChangeChoice}
           />
           <MiniBarButton
@@ -154,12 +156,13 @@ class MiniContent extends React.Component {
             title={'Social'}
             active={this.isActive(sections.social)}
             section={sections.social}
+            disabled={this.props.social ? false : true}
             handleClick={this.props.handleChangeChoice}
           />
         </View>
         <View style={styles.miniContentInfo}>
           {
-            this.props.activeChoice === 'instructions' ?
+            this.props.activeChoice === 'instructions' && this.props.instruction ?
           <Text style={styles.plotLabel}>
             {this.props.instruction.text}
           </Text>
@@ -167,7 +170,7 @@ class MiniContent extends React.Component {
             <Text style={styles.plotLabel}>
              Sinópsis
             </Text>
-            : this.props.activeChoice === 'social' &&
+            : this.props.activeChoice === 'social' && this.props.social &&
             <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center' }}>
               { this.props.social.website &&
                 <SocialButton 
@@ -206,7 +209,7 @@ class MiniContent extends React.Component {
           }
         </View>
         {
-          this.props.activeChoice === 'instructions' ?
+          this.props.activeChoice === 'instructions' && this.props.instruction.link ?
             <View style={styles.miniPaginationWrapper}>
               <GazeButton
                 style={[styles.miniInstructionButton, this.state.hover ? styles.miniInstructionButtonHover : null]}
@@ -237,9 +240,11 @@ class Player extends React.Component {
   constructor(props) {
     super(props)
     // Setup del Reproductor de Videos
-    if (!this.player) {
-      this.player = VideoModule.createPlayer('myplayer');
-    }
+    this.player = VideoModule.createPlayer('myplayer');
+  }
+
+  componentWillUnmount() {
+    VideoModule.destroyPlayer('myplayer');
   }
 
   // Función para reproducir Videos
