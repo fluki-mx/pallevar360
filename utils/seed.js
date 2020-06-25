@@ -35,7 +35,7 @@ export default [
         id: 2,
         title: 'KAUYUMARI 360',
         plot: [
-            'Sinópsis ... ',
+            'Narra como el venado azul Kauyumari, guía a los peregrinos wixaritari hasta Wirikuta, en donde se sacrifica transformándose en peyote',
         ],
         instruction: null,
         filmmaker: 'Arnold Abadie',
@@ -54,7 +54,7 @@ export default [
         id: 3,
         title: 'FUTURE DREAMING',
         plot: [
-            'Sinópsis ... ',
+            'En esta inmersiva película en realidad virtual te adentraras en una envolvente burbuja de sueños con cuatro jóvenes aborígenes australianos que te guían a través de sus futuros.',
         ],
         instruction: {
             text: 'Por ahora esta experiencia está disponible en el idioma ingles',
@@ -81,7 +81,7 @@ export default [
         id: 4,
         title: 'THE INTERPRETATION OF DREAMS',
         plot: [
-            'Sinópsis ... ',
+            'En 1899, Sigmund Freud publicó La Interpretación de los Sueños, estremeciendo al mundo y cambiando para siempre nuestro entendimiento de los sueños.',
         ],
         instruction: {
             text: '¡NO es recomendada para menores de 15 años! La interpretación de los sueños es una serie episódica en 360. La experiencia está solo en el idioma Inglés',
@@ -100,6 +100,21 @@ export default [
                 title: 'Ver EP1',
                 uri: 'https://duhaw0maiynh4.cloudfront.net/dream1_360.mp4',
                 stereo: undefined
+            },
+            {
+                title: 'Ver EP2',
+                uri: 'https://duhaw0maiynh4.cloudfront.net/dream2_360.mp4',
+                stereo: undefined
+            },
+            {
+                title: 'Ver EP3',
+                uri: 'https://duhaw0maiynh4.cloudfront.net/dream3_360.mp4',
+                stereo: undefined
+            },
+            {
+                title: 'Ver EP4',
+                uri: 'https://duhaw0maiynh4.cloudfront.net/dream4_360.mp4',
+                stereo: undefined
             }
         ],
         preview: 'https://d13z4wu9p201is.cloudfront.net/theInterpretationOfDreams_360.png',
@@ -109,7 +124,7 @@ export default [
         title: 'EL SUEÑO DE LA HIJA DEL JAGUAR',
         instruction: null,
         plot: [
-            'Sinópsis ... ',
+            'Documental surreal donde Achik’, el espíritu de una joven inmigrante maya, guía al espectador a través de sus sueños y recuerdos del arduo viaje al norte.',
         ],
         filmmaker: 'Alfredo Salazar Caro',
         country: 'México',
@@ -130,10 +145,10 @@ export default [
     },
     {
         id: 6,
-        title: 'CONCIOUS EXISTENCE',
+        title: 'CONSCIOUS EXISTENCE',
         instruction: null,
         plot: [
-            'Sinópsis ... ',
+            'Hemos sido obsequiados en todo momento con el logro más preciado de la vida: una mente consciente, la cual nos sentir y aferrarnos a la infinita belleza del universo.',
         ],
         filmmaker: 'Marc Zimmerman',
         country: 'Alemania',
@@ -148,7 +163,7 @@ export default [
             {
                 title: 'Ver Película',
                 stereo: undefined,
-                uri: 'https://duhaw0maiynh4.cloudfront.net/conciousExistence_360.mp4',
+                uri: 'https://duhaw0maiynh4.cloudfront.net/consciousExistence_360.mp4',
             }
         ],
         preview: 'https://d13z4wu9p201is.cloudfront.net/conciousExistence_360.png',
@@ -161,7 +176,7 @@ export default [
             link: null
         },
         plot: [
-            'Sinópsis ... ',
+            'La triste retribución de un espíritu sin cuerpo.',
         ],
         filmmaker: 'Sgnmoo Lee',
         country: 'Corea',
@@ -185,7 +200,7 @@ export default [
         title: 'CHUANG IN THE PICTURES',
         instruction: null,
         plot: [
-            'Sinópsis ... ',
+            'Viaja a través de distintas realidades abstractas y de las ventanas de la mente. Te encontrarás a ti mismo en una magnífica librería, o en el cuarto de una pequeña niña discapacitada.',
         ],
         filmmaker: 'Shao Qing',
         country: 'China',
@@ -209,7 +224,7 @@ export default [
         title: '6x9',
         instruction: null,
         plot: [
-            'Sinópsis ... ',
+            '¿Cómo es pasar 23 horas al día en una celda que mide 6x9 pulgadas durante días, semanas, meses o incluso años? Experiencia de realidad virtual de The Guardian',
         ],
         filmmaker: 'The Guardian',
         country: 'USA',
@@ -219,13 +234,7 @@ export default [
             facebook: null,
             twitter: null 
         },
-        uris: [
-            {
-                title: 'Ver Película',
-                uri: 'https://duhaw0maiynh4.cloudfront.net/6x9_360.mp4',
-                stereo: undefined
-            }
-        ],
+        uris: null,
         preview: 'https://d13z4wu9p201is.cloudfront.net/6x9_360.png',
     },
     {
@@ -236,7 +245,7 @@ export default [
             link: null
         },
         plot: [
-            'Sinópsis ... ',
+            'The Forest Inhales You es una confluencia de humanos y naturaleza. Revelando la disolución de las fronteras físicas y la intención de conexión.',
         ],
         filmmaker: 'Inka Kendzia, Mr Sakitumi, Jason Stapleton, Noël Labridy y Mark Rautenbatch',
         country: 'Sudáfrica',
@@ -263,7 +272,7 @@ export default [
             link: null
         },
         plot: [
-            'Sinópsis ... ',
+            '"Estás dondequiera que estén tus pensamientos" nos presenta lo que parece ser un mundo extraño.',
         ],
         filmmaker: 'David Amberg',
         country: 'Alemania',

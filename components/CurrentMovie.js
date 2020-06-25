@@ -114,11 +114,13 @@ class MiniContent extends React.Component {
   };
 
   componentDidMount() {
-    console.log(this.props.plot)
-    console.log(this.state)
     const plotPages = PlotPaginator(this.state.activePagePlot, this.props.plot);
     console.log(plotPages)
   }
+
+  componentDidUpdate(prevProps) {
+    console.log(prevProps)
+  } 
 
   handlePlotPage(number) {
 
@@ -168,7 +170,7 @@ class MiniContent extends React.Component {
           </Text>
             : this.props.activeChoice === 'plot' ?
             <Text style={styles.plotLabel}>
-             Sinópsis
+             { this.props.plot[0] }
             </Text>
             : this.props.activeChoice === 'social' && this.props.social &&
             <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center' }}>
@@ -270,7 +272,7 @@ class Player extends React.Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.playerWrapper}>
         {
           this.props.movies.map((movie, i) => (
             <GazeButton
@@ -335,15 +337,19 @@ class CurrentMovie extends React.Component {
         <Text style={styles.nameLabel}>{movie.title}</Text>
         <Text style={styles.filmmakerLabel}>{movie.filmmaker}</Text>
         <MiniContent
+          id={movie.title}
           instruction={movie.instruction} 
           plot={movie.plot}
           social={movie.social}
           activeChoice={this.state.section}
           handleChangeChoice={this.changeSection}
         />
-        <Player 
-          movies={movie.uris}
-        />
+        {
+          movie.uris &&
+          <Player 
+            movies={movie.uris}
+          />
+        }
         {/* <GazeButton
           duration={400}
           style={styles.playButton}
@@ -378,7 +384,8 @@ const styles = StyleSheet.create({
     playButton: {
       height: 50,
       width: 180,
-      marginVertical: 15,
+      marginVertical: 5,
+      marginHorizontal: 5,
       backgroundColor: 'rgba(237, 255, 0, 0.8)',
       overflow: 'hidden',
     },
@@ -389,13 +396,14 @@ const styles = StyleSheet.create({
       textAlign: 'center'
     },
     nameLabel: {
-      fontSize: 60,
+      fontSize: 50,
       fontWeight: 'bold',
       textAlign: 'center',
     },
     filmmakerLabel: {
-        fontSize: 30,
-        textAlign: 'center',
+      paddingVertical: 10,
+      fontSize: 30,
+      textAlign: 'center',
     },
 
     // MiniContent
@@ -506,6 +514,13 @@ const styles = StyleSheet.create({
         fontWeight: 'bold', 
         color: 'rgb(237, 255, 0)',
     },
+
+    //Player
+    playerWrapper: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      flexWrap: 'wrap'
+    }
 });
   
 const ConnectedCurrentMovie = connect(CurrentMovie);
