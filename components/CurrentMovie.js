@@ -241,34 +241,42 @@ class Player extends React.Component {
   // Constructor
   constructor(props) {
     super(props)
-    // Setup del Reproductor de Videos
-    this.player = VideoModule.createPlayer('myplayer');
-  }
-
-  componentWillUnmount() {
-    if (this.props.status) {
-      console.log('KILL')
-      VideoModule.destroyPlayer('myplayer');
+    console.log('BORN')
+    try {
+      this.player = VideoModule.getPlayer('myplayer')
+    } catch (error) {
+      this.player = VideoModule.createPlayer('myplayer');
     }
   }
 
-  // Función para reproducir Videos
-  _playVideo = (videoURL, videoStereo=null) => {  
+  // componentWillMount() {
+  //   console.log('MOUNT')
+  // }
 
+  // componentWillUnmount() {
+  //   if (!this.props.status) {
+  //     console.log('KILL')
+  //     VideoModule.destroyPlayer('myplayer');
+  //   }
+  // }
+
+  // Función para reproducir Videos
+  _playVideo = (videoURL, videoStereo=null) => { 
     // Función para reproducir Videos y setear configuraciones
     this.player.play({
       source: { url: videoURL }, // provide the path to the video
       stereo: videoStereo ? videoStereo : null,
-      volume: 0.5,
+      muted: false,
       autoPlay: false,
     });
 
+    
     // Setea el reproductor como background de la pantalla
     Environment.setBackgroundVideo('myplayer');
-    
-    // Resume el video
-    this.player.resume();
 
+    this.player.pause();
+    this.player.resume();
+    
     // Cambia el estatus en el Store para renderizar los controles mientras se reproduce un video
     changePlayerStatus();
   }
