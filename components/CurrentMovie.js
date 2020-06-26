@@ -246,7 +246,10 @@ class Player extends React.Component {
   }
 
   componentWillUnmount() {
-    VideoModule.destroyPlayer('myplayer');
+    if (this.props.status) {
+      console.log('KILL')
+      VideoModule.destroyPlayer('myplayer');
+    }
   }
 
   // Función para reproducir Videos
@@ -347,6 +350,7 @@ class CurrentMovie extends React.Component {
         {
           movie.uris &&
           <Player 
+            status={this.props.playing}
             movies={movie.uris}
           />
         }
