@@ -163,7 +163,7 @@ export default [
             {
                 title: 'Ver Película',
                 stereo: undefined,
-                uri: 'https://duhaw0maiynh4.cloudfront.net/consciousMX_360.mp4',
+                uri: 'https://d1gadomrnghemq.cloudfront.net/consciousMX_360.mp4',
             }
         ],
         preview: 'https://d13z4wu9p201is.cloudfront.net/conciousExistence_360.png',
@@ -183,7 +183,7 @@ export default [
         uris: [
             {
                 title: 'Ver Película',
-                uri: 'https://duhaw0maiynh4.cloudfront.net/eyesRedWindMX_360.mp4',
+                uri: 'https://d1gadomrnghemq.cloudfront.net/eyesRedWindMX_360.mp4',
                 stereo: undefined,
             }
         ],
@@ -213,7 +213,7 @@ export default [
         uris: [
             {
                 title: 'Ver Película',
-                uri: 'https://duhaw0maiynh4.cloudfront.net/chuangMX_360.mp4',
+                uri: 'https://d1gadomrnghemq.cloudfront.net/chuangMX_360.mp4',
                 stereo: undefined
             }
         ],
