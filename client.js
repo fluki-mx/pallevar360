@@ -49,6 +49,8 @@ function init(bundle, parent, options = {}) {
   // * Funciona para poder dar clic a los componentes dentro de la Plataforma *
   r360.controls.clearRaycasters()
   r360.controls.addRaycaster(SimpleRaycaster);
+
+  r360.controls.start();
 }
 
 window.React360 = {init};

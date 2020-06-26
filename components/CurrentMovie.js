@@ -266,7 +266,7 @@ class Player extends React.Component {
     this.player.play({
       source: { url: videoURL }, // provide the path to the video
       stereo: videoStereo ? videoStereo : null,
-      muted: false,
+      muted: true,
       autoPlay: false,
     });
 
