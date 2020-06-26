@@ -26,7 +26,7 @@ export default [
             {
                 title: 'Ver Película',
                 uri: 'https://duhaw0maiynh4.cloudfront.net/cosmonaute_360.mp4',
-                stereo: '3DBT'
+                stereo: null
             }
         ],
         preview: 'https://d13z4wu9p201is.cloudfront.net/cosmonaute_360.png',
