@@ -258,8 +258,8 @@ class Player extends React.Component {
     // Función para reproducir Videos y setear configuraciones
     this.player.play({
       source: { url: videoURL }, // provide the path to the video
-      muted: true,
       stereo: videoStereo ? videoStereo : null,
+      volume: 0.5,
       autoPlay: false,
     });
 
