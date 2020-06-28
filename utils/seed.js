@@ -66,7 +66,7 @@ export default [
             {
                 title: 'Ver Película',
                 uri: 'https://duhaw0maiynh4.cloudfront.net/futureDreaming_360.mp4',
-                stereo: undefined
+                stereo: '3DBT'
             }
         ],
         social: {
@@ -137,7 +137,7 @@ export default [
         uris: [
             {
                 title: 'Ver Película',
-                stereo: undefined,
+                stereo: '3DBT',
                 uri: 'https://duhaw0maiynh4.cloudfront.net/hijaJaguar_360.mp4',
             }
         ],
@@ -162,7 +162,7 @@ export default [
         uris: [
             {
                 title: 'Ver Película',
-                stereo: undefined,
+                stereo: '3DBT',
                 uri: 'https://d1gadomrnghemq.cloudfront.net/consciousMX_360.mp4',
             }
         ],
@@ -184,7 +184,7 @@ export default [
             {
                 title: 'Ver Película',
                 uri: 'https://d1gadomrnghemq.cloudfront.net/eyesRedWindMX_360.mp4',
-                stereo: undefined,
+                stereo: '3DBT',
             }
         ],
         social: {
@@ -286,7 +286,7 @@ export default [
             {
                 title: 'Ver Película',
                 uri: 'https://duhaw0maiynh4.cloudfront.net/whereverThoughts_360.mp4',
-                stereo: undefined
+                stereo: '3DBT'
             }
         ],
         preview: 'https://d13z4wu9p201is.cloudfront.net/whereverThoughts_360.png',

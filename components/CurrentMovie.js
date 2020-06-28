@@ -4,6 +4,7 @@ import VideoModule from 'VideoModule';
 import GazeButton from "react-360-gaze-button";
 import { connect, changePlayerStatus } from '../utils/Store';
 import { PlotPaginator } from '../utils/funcs';
+import {isMobile} from 'react-device-detect';
 
 class MiniPaginationButton extends React.Component {
   state = {
@@ -266,13 +267,20 @@ class Player extends React.Component {
     this.player.play({
       source: { url: videoURL }, // provide the path to the video
       stereo: videoStereo ? videoStereo : null,
-      muted: true,
-      autoPlay: false,
+      autoPlay: false
     });
 
     
     // Setea el reproductor como background de la pantalla
     Environment.setBackgroundVideo('myplayer');
+
+    if(isMobile) {
+      //mobile
+      this.player.setMuted(true);
+    } else {
+      //desktop
+      this.player.setMuted(false);
+    } 
 
     this.player.pause();
     this.player.resume();

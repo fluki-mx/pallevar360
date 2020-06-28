@@ -15,6 +15,7 @@
     "react-360": "~1.1.0",
     "react-360-gaze-button": "^1.0.0",
     "react-360-web": "~1.1.0",
+    "react-device-detect": "^1.13.1",
     "react-native": "~0.55.4",
     "simple-raycaster": "^1.1.0",
     "three": "^0.87.0"
