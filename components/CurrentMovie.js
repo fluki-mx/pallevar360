@@ -244,43 +244,23 @@ class Player extends React.Component {
     super(props)
     console.log('BORN')
     try {
-      this.player = VideoModule.getPlayer('myplayer')
+      this.player = VideoModule.getPlayer('myplayer');
     } catch (error) {
       this.player = VideoModule.createPlayer('myplayer');
     }
   }
 
-  // componentWillMount() {
-  //   console.log('MOUNT')
-  // }
-
-  // componentWillUnmount() {
-  //   if (!this.props.status) {
-  //     console.log('KILL')
-  //     VideoModule.destroyPlayer('myplayer');
-  //   }
-  // }
-
   // Función para reproducir Videos
   _playVideo = (videoURL, videoStereo=null) => { 
-    // Función para reproducir Videos y setear configuraciones
     this.player.play({
       source: { url: videoURL }, // provide the path to the video
       stereo: videoStereo ? videoStereo : null,
-      autoPlay: false
+      autoPlay: false,
+      muted: false
     });
-
     
     // Setea el reproductor como background de la pantalla
     Environment.setBackgroundVideo('myplayer');
-
-    if(isMobile) {
-      //mobile
-      this.player.setMuted(true);
-    } else {
-      //desktop
-      this.player.setMuted(false);
-    } 
 
     this.player.pause();
     this.player.resume();

@@ -48,7 +48,7 @@ function init(bundle, parent, options = {}) {
   // Seteo del Raycaster, librería que agrega un cursor a la pantalla
   // * Funciona para poder dar clic a los componentes dentro de la Plataforma *
   r360.controls.clearRaycasters()
-  r360.controls.addRaycaster(SimpleRaycaster);
+  r360.controls.addRaycaster(SimpleRaycaster);  
 
   r360.controls.start();
 }
