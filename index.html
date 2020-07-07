@@ -34,9 +34,11 @@
   </head>
   <body>
     <div id="container">
-      <button type="button" id="playbutton" class="btn-vr">
-        Ir a la Experiencia
-      </button>
+      <div id="buttonHold">
+        <button type="button" id="playbutton" class="btn-vr">
+          Ir a la Experiencia
+        </button>
+      </div>
       <video id="video" width="0" height="0">
         <source src="" />
       </video>
@@ -57,7 +59,7 @@
 
     async function playVideo() {
       try {
-        const elem = document.getElementById('playbutton');
+        const elem = document.getElementById('buttonHold');
         elem.parentNode.removeChild(elem);
         await videoPlayUnmutePause();
         enterApp();
