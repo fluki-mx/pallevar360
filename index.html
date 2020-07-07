@@ -2,18 +2,47 @@
   <head>
     <title>VR Para Llevar 360º</title>
     <style>body { margin: 0; }</style>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+      #container {
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .btn-vr {
+        height: 150px;
+        width: 300px;
+        color: #212529;
+        background-color: #EDFF00;
+        border: 1.5px dashed #050505 !important;
+        font-family: 'Bebas Neue', cursive;
+        font-size: 3rem;
+      }
+
+      .btn-vr:hover {
+        color: #212529;
+        background-color: #d1ce0d;
+        border: 2px dotted #EDFF00 !important;
+      }
+    </style>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   </head>
   <body>
     <div id="container">
       <div id="buttonHold">
-        <input type="button" value="Play" id="playbutton">
-        </input>
+        <button type="button" id="playbutton" class="btn-vr">
+          Ir a la Experiencia
+        </button>
       </div>
       <video id="video" width="0" height="0">
         <source src="" />
       </video>
-    </div>
+      </div>
     <script>
       // CDN de WebVR Polyfill
     </script>
@@ -30,9 +59,12 @@
 
     async function playVideo() {
       try {
+        const elem = document.getElementById('buttonHold');
+        elem.parentNode.removeChild(elem);
         await videoPlayUnmutePause();
         enterApp();
       } catch(err) {
+        enterApp();
         console.log(err);
       }
     }
@@ -41,10 +73,9 @@
       videoElem.play();
       videoElem.muted = false;
       videoElem.pause();
-      const elem = document.getElementById('buttonHold');
-      elem.parentNode.removeChild(elem);
     }
-      // Inicializador la aplicación con React 360
+
+    // Inicializador la aplicación con React 360
     function enterApp() {
       // Initialize the React 360 application
       React360.init(
