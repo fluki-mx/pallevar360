@@ -50,7 +50,7 @@ function init(bundle, parent, options = {}) {
   r360.controls.clearRaycasters()
   r360.controls.addRaycaster(SimpleRaycaster);  
 
-  r360.controls.start();
+  //r360.controls.start();
 }
 
 window.React360 = {init};
