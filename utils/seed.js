@@ -231,13 +231,7 @@ export default [
             facebook: null,
             twitter: null 
         },
-        uris: [
-            {
-                title: 'Ver Película',
-                uri: 'https://duhaw0maiynh4.cloudfront.net/forest_360.mp4',
-                stereo: undefined
-            }
-        ],
+        uris: null,
         preview: 'https://d13z4wu9p201is.cloudfront.net/forest_360.png',
     },
     {
