@@ -134,13 +134,7 @@ export default [
             facebook: null,
             twitter: null 
         },
-        uris: [
-            {
-                title: 'Ver Película',
-                stereo: '3DBT',
-                uri: 'https://duhaw0maiynh4.cloudfront.net/hijaJaguar_360.mp4',
-            }
-        ],
+        uris: null,
         preview: 'https://d13z4wu9p201is.cloudfront.net/hijaJaguar_360.png',
     },
     {
@@ -159,13 +153,7 @@ export default [
             facebook: 'https://www.facebook.com/diversioncinema',
             twitter: null 
         },
-        uris: [
-            {
-                title: 'Ver Película',
-                stereo: '3DBT',
-                uri: 'https://d1gadomrnghemq.cloudfront.net/consciousMX_360.mp4',
-            }
-        ],
+        uris: null,
         preview: 'https://d13z4wu9p201is.cloudfront.net/conciousExistence_360.png',
     },
     {
@@ -180,13 +168,7 @@ export default [
         ],
         filmmaker: 'Sgnmoo Lee',
         country: 'Corea',
-        uris: [
-            {
-                title: 'Ver Película',
-                uri: 'https://d1gadomrnghemq.cloudfront.net/eyesRedWindMX_360.mp4',
-                stereo: '3DBT',
-            }
-        ],
+        uris: null,
         social: {
             website: null,
             instagram: 'https://www.instagram.com/diversioncinema',
@@ -210,13 +192,7 @@ export default [
             facebook: 'https://www.facebook.com/diversioncinema',
             twitter: null 
         },
-        uris: [
-            {
-                title: 'Ver Película',
-                uri: 'https://d1gadomrnghemq.cloudfront.net/chuangMX_360.mp4',
-                stereo: undefined
-            }
-        ],
+        uris: null,
         preview: 'https://d13z4wu9p201is.cloudfront.net/chuangPictures_360.png',
     },
     {
