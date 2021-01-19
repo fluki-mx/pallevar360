@@ -40,13 +40,7 @@ export default [
         instruction: null,
         filmmaker: 'Arnold Abadie',
         country: 'México',
-        uris: [
-            {
-                title: 'Ver Película',
-                uri: 'https://duhaw0maiynh4.cloudfront.net/kauyumari_360.mp4',
-                stereo: undefined
-            }
-        ],
+        uris: null,
         social: null,
         preview: 'https://d13z4wu9p201is.cloudfront.net/kauyumari_360.png',
     },
@@ -231,13 +225,7 @@ export default [
             facebook: null,
             twitter: null 
         },
-        uris: [
-            {
-                title: 'Ver Película',
-                uri: 'https://duhaw0maiynh4.cloudfront.net/whereverThoughts_360.mp4',
-                stereo: '3DBT'
-            }
-        ],
+        uris: null,
         preview: 'https://d13z4wu9p201is.cloudfront.net/whereverThoughts_360.png',
     },
     
