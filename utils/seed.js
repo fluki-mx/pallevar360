@@ -95,28 +95,7 @@ export default [
             facebook: null,
             twitter: null 
         },
-        uris: [
-            {
-                title: 'Ver EP1',
-                uri: 'https://duhaw0maiynh4.cloudfront.net/dream1_360.mp4',
-                stereo: undefined
-            },
-            {
-                title: 'Ver EP2',
-                uri: 'https://duhaw0maiynh4.cloudfront.net/dream2_360.mp4',
-                stereo: undefined
-            },
-            {
-                title: 'Ver EP3',
-                uri: 'https://duhaw0maiynh4.cloudfront.net/dream3_360.mp4',
-                stereo: undefined
-            },
-            {
-                title: 'Ver EP4',
-                uri: 'https://duhaw0maiynh4.cloudfront.net/dream4_360.mp4',
-                stereo: undefined
-            }
-        ],
+        uris: null,
         preview: 'https://d13z4wu9p201is.cloudfront.net/theInterpretationOfDreams_360.png',
     },
     {
